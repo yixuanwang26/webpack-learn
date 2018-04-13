@@ -44,7 +44,7 @@ new Vue({
 ```
 npm i vue
 ```
-2. 需要安装对单个组件.vue 文件进行转换的 vue-loader，以及vue-template-compiler和css-loader。
+2. 需要安装对单个组件.vue 文件进行转换的 vue-loader，以及vue-template-compiler和css-loader。
 
 ```
 npm i -D vue-loader  vue-template-compiler  css-loader

@@ -1,0 +1,29 @@
+{
+  "name": "hello-nenawan",
+  "version": "1.0.3",
+  "description": "webpack-learn",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "author": "nenawan",
+  "license": "TIM",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "style-loader": "^0.20.3",
+    "webpack": "^3.2.0"
+  }
+}

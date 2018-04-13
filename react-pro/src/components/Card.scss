@@ -1,0 +1,14 @@
+$font-color: #F90;
+$base-bg-color: #eee;
+
+.Card {
+    background-color: $base-bg-color;
+    color: $font-color;
+    .title {
+        color: #000;
+    }
+    .content {
+        $content-bg-color: #fff;
+        background-color: $content-bg-color;
+    }
+}

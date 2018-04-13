@@ -54,7 +54,7 @@ entry: {
 filename: '[name]_[hash:8].js'
 ```
 
-这样配置之后，打包的 js 命名为 chuck 名称+8位 hash 码。
+这样配置之后，打包的 js 命名为 chuck 名称+8位 hash 码。
 
 5. module 的 rules 中增加对 css 文件的 loader 规则，可提取出 js 中 import的 css, ExtractTextPlugin将 css 打包为单独的文件。
 ```
@@ -120,7 +120,7 @@ _inline表示将 css 文件内容插入此处，而不是使用link引入。
 
 `_dist` : 只在生产环境引入
 
-`_dev`  : 只在测试环境引入
+`_dev`  : 只在测试环境引入
 
 `_ie`   : 只在 ie 浏览器中引用
 
@@ -129,7 +129,7 @@ _inline表示将 css 文件内容插入此处，而不是使用link引入。
 
 1. extract-text-webpack-plugin 可以使用于,将不同格式的 css 单独打包，例如 scss,less
 
-2. webpack4.x 取消了CommonsChunkPlugin插件，换为使用其他 api 接口，但是 webpack-cli 与 webpack-dev-server 用到了CommonsChunkPlugin插件，在 build 或者 start时有可能报错，建议先使用 webpack3.x，并相应降低 webpack-dev-server 的版本。
+2. webpack4.x 取消了CommonsChunkPlugin插件，换为使用其他 api 接口，但是 webpack-cli 与 webpack-dev-server 用到了CommonsChunkPlugin插件，在 build 或者 start时有可能报错，建议先使用 webpack3.x，并相应降低 webpack-dev-server 的版本。
 
 
 

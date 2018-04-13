@@ -100,7 +100,7 @@ devServer: {
 
 * devServer.hot
 
-   允许 dev-server 进行局部更新，即并不是刷新整个页面，而是对有修改的组件进行局部刷新。
+   允许 dev-server 进行局部更新，即并不是刷新整个页面，而是对有修改的组件进行局部刷新。
 
    如果需要配置该项，则：
    1. 配置 `hot:true`, 并且在插件项中配置webpack.HotModuleReplacementPlugin插件，否则报错。

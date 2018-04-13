@@ -1,13 +1,14 @@
 
 
 # dependencies
-/../node_modules
+/*/node_modules
+/*/package-lock.json
 
 # misc
 .DS_Store
 npm-debug.log*
 
 /.idea
-/../package-lock.json
-
-/../.vscode
+/.vscode
+/*/.vscode
+/*/.idea

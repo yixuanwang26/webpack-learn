@@ -1,7 +1,7 @@
 {
   "name": "webpack-learn",
   "version": "1.0.0",
-   "babel": {
+  "babel": {
     "presets": [
       "react"
     ]

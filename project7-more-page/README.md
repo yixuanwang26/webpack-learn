@@ -1,4 +1,4 @@
-# react + dev-server多页面管理项目
+# react + dev-server多页面管理项目
 
 基础项目： 使用 react,并加入 dev-server 进行热启动
 增加功能： 利用插件 web-webpack-plugin 打包 login 与 index 两个页面，将两页面各自的 js 与 css 分开打包插入对应 html 文件，将两页面公用部分的 js,css 打包为 common 文件进行引入。
@@ -88,7 +88,7 @@ plugins: [
 
 2. common.css 在 webpack 配置文件中经过配置后并不需要再单独引入每个 js 中。
 
-3. 以上配置后 build 即可，如果需要热启动，则需要配置devServer 中的historyApiFallback，使其对应不同路径返回不同页面。
+3. 以上配置后 build 即可，如果需要热启动，则需要配置devServer 中的historyApiFallback，使其对应不同路径返回不同页面。
 
 ```
 historyApiFallback: {

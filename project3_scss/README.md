@@ -21,7 +21,8 @@ npm i -D style-loader
 ### 四、配置方法：
 css modules 的配置方法：
 
-在css-loader 中配置其配置项module为 true,并可配置其命名规则 
+在css-loader 中配置其配置项module为 true,并可配置其命名规则 
+
 // todo 具体各 loader 的配置项中重要内容
 
 ### 五、注意事项：
@@ -45,7 +46,7 @@ css modules 使用
 }
 ```
 
-在构建时使用构建工具将style.title转换为一个哈希字符串，同时 css 也会被编译。因此这个样式就会是全局唯一的样式。
+在构建时使用构建工具将style.title转换为一个哈希字符串，同时 css 也会被编译。因此这个样式就会是全局唯一的样式。
 
 如果不使用 css modules,如下引入 css
 

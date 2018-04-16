@@ -11,8 +11,8 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
+                use: ["babel-loader?cacheDirectory"],
+                include: path.resolve(__dirname, 'src'),
             },
             {
                 test: /\.scss/,
@@ -33,11 +33,23 @@ module.exports = {
                     },
                     ],
             },
-        ]
+        ],
+        noParse: [/react\.min\.js$/],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
+    resolve: {
+        // 使用绝对路径指明第三方模块存放的位置，以减少搜索步骤
+        // 其中 __dirname 表示当前工作目录，也就是项目根目录
+        modules: [path.resolve(__dirname, 'node_modules')],
+        alias: {
+            'react-dom': path.resolve(__dirname, './node_modules/react-dom/dist/react-dom.min.js'),
+            'react': path.resolve(__dirname, './node_modules/react/dist/react.min.js'),
+        },
+        extensions: ['.js'],
+        modules: [path.resolve(__dirname, 'node_modules')]
+    },
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         hot: true,

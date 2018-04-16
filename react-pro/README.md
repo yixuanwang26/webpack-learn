@@ -1,62 +1,91 @@
-# react + dev-server + scss
+# react项目优化
 
-在之前的项目基础上增加 scss
+## 缩小文件搜索范围
 
-### 一、功能介绍：
+### 优化效果：
+ 
+webpack在打包时，从入口文件开始一步一步查找当前文件通过 import 或者 require 引入的其他依赖文件，找到之后使用配置的 loader 去转化语法。
 
+在文件很多，项目架构庞大时，以上步骤的花费时间将会占据大部分打包时间，因此在 webpack 第一步搜索查找 import 文件时，如果能缩小文件搜索范围，将会有效压缩打包时间，提高效率。
 
-### 二、原理解释：
+### 实现方法：
 
-
-
-### 三、所需npm包：
-
+1. 在 loader 加载时，过滤不必要的文件，或者指定对应文件夹：
 ```
-npm i -D css-loader
-npm i -D node-sass
-npm i -D sass-loader
-npm i -D style-loader
-```
-
-### 四、配置方法：
-css modules 的配置方法：
-
-在css-loader 中配置其配置项module为 true,并可配置其命名规则 
-// todo 具体各 loader 的配置项中重要内容
-
-### 五、注意事项：
-
-css modules 和普通css 最大的区别在于：
-
-css modules 使用
-
-    ```
-    import style from './App.css';
-
-    <h1 className={style.title}>
-      Hello World
-    </h1>
-    ```
-`className`这样的方式引入样式，样式文件为：
-
-```
-.title {
-  color: red;
+{
+    test: /\.js$/,
+    use: ["babel-loader?cacheDirectory"],
+    include: path.resolve(__dirname, 'src'),
 }
 ```
+其中，
+```
+include: path.resolve(__dirname, 'src'),
+```
+缩小了可转换的 js 文件的查询范围，限制在 src 文件夹下。
 
-在构建时使用构建工具将style.title转换为一个哈希字符串，同时 css 也会被编译。因此这个样式就会是全局唯一的样式。
+`cacheDirectory` 为 babel-loader 的一个选项，使其支持缓存转换出的结果。
 
-如果不使用 css modules,如下引入 css
+2. 配置 resolve 下的
+```
+modules: [path.resolve(__dirname, 'node_modules')]
+```
 
-    ```
-    import style from './App.css';
+可设置当前项目的所有模块都从项目下的 node_modules 文件夹下查询。即没有使用全局模块的项目可配置该选项。
 
-    <h1 className="title">
-      Hello World
-    </h1>
-    ```
-则该 css样式全局有效。
+3. 配置 resolve 下的
 
+```
+extensions: ['.js'],
+```
+该项配置了当出现 ` import xx from '../Card' ` 这样的引入时，自动查找什么类型的文件，以上配置为 .js 文件，建议尽量减少这种引入方式，配置该项时也尽可能少配置种类。
 
+4. 配置 resolve 下的
+```
+alias: {
+            'react-dom': path.resolve(__dirname, './node_modules/react-dom/dist/react-dom.min.js'),
+            'react': path.resolve(__dirname, './node_modules/react/dist/react.min.js'),
+        },
+```
+该项是配置 import 时的某些路径或者模块，为其取别名并配置路径，方便引入。
 
+例如：
+```
+import Utility from '../../utilities/utility';
+```
+
+在配置过
+```
+alias: {
+  Utilities: path.resolve(__dirname, 'src/utilities/')
+}
+```
+之后，可以这样引入：
+```
+import Utility from 'Utilities/utility';
+```
+
+在本项目中，利用这种配置方法将‘react’ 配置为其模块包中的
+```
+/node_modules/react/dist/react.min.js
+```
+
+`react.min.js` 为 react 的打包后的最小压缩包，其中没有 import，require 等导入语法，因此可以同时配置 module 下的 noParse 选项：
+
+```
+module: {
+    // 独完整的 `react.min.js` 文件就没有采用模块化，忽略对 `react.min.js` 文件的递归解析处理
+    noParse: [/react\.min\.js$/],
+  },
+```
+
+一般来说，如果引入某模块的最小压缩包时，配套 noParse 配置使用。
+
+ 
+### 适用情况：
+
+第五项优化适用于整体性较强的模块，对于 lodash 这种模块，引用的方法如果不多，使用这种方式打包反而会增加不必要的代码。
+
+### 注意事项:
+
+在对 react 配置别名时，报错，内容为无法找到 react-dom 中引入的 react 模块，因此解决办法为将 react-dom 同时以最小压缩包形式引入。它自成整体，就不需要再依赖 react 了。

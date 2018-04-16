@@ -40,12 +40,12 @@ export class Card extends React.Component {
 React.createElement('h1', null, 'Hello,Webpack')
 ```
 
-但是使用JSX语法，可以让我们的 react 项目语句更优美，更能直观体现其功能，所以，一般而言都使用 JSX 语法。支持 JSX 语法需要配置 babel.
+但是使用JSX语法，可以让我们的 react 项目语句更优美，更能直观体现其功能，所以，一般而言都使用 JSX 语法。支持 JSX 语法需要配置 babel.
 
 ### 原理解释：
 babel可以将 JSX 语法转换为一般的 javascript 语法，如上面所示
 ```
-// jsx 语法
+// jsx 语法
 ReactDom.render(
   <div>hello,react.</div>,
   document.getElementById('app')

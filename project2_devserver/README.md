@@ -29,9 +29,11 @@ npm i -D webpack-dev-server
 "start": "webpack-dev-server --mode development"
 ```
 
-注意： 在 webpack4.0之后，需要指明其运行模式，即命令行配置 --mode development 或者 --mode production, 否则项目启动后会有警告提示。 //todo: 配置之后的作用
+注意： 在 webpack4.0之后，需要指明其运行模式，即命令行配置 --mode development 或者 --mode production, 否则项目启动后会有警告提示。 
 
-安装 dev-server 包，并且修改启动命令之后执行
+//todo: 配置之后的作用
+
+安装 dev-server 包，并且修改启动命令之后执行
 
 ```
 npm start
@@ -63,11 +65,11 @@ devServer: {
 
 * devServer 
   
-    对 dev-server 的详细功能进行配置，当项目使用 webpack-dev-server 启动时，这些配置项才会生效。因为这些参数对应的功能是由 dev-server 提供的，因此 webpack 并不认识这些配置参数。
+    对 dev-server 的详细功能进行配置，当项目使用 webpack-dev-server 启动时，这些配置项才会生效。因为这些参数对应的功能是由 dev-server 提供的，因此 webpack 并不认识这些配置参数。
 
 * devServer.contentBase
 
-   在之前的步骤中，项目启动以后打开localhost指定的监听端口，页面并没有跳转到index.html，而是显示了整个文件夹的内容列表。这是因为 webpack-dev-server 默认的提供文件的路径为当前路径，如果打包后的文件在子文件夹，需要配置 contentBase 属性，最好使用绝对路径。
+   在之前的步骤中，项目启动以后打开localhost指定的监听端口，页面并没有跳转到index.html，而是显示了整个文件夹的内容列表。这是因为 webpack-dev-server 默认的提供文件的路径为当前路径，如果打包后的文件在子文件夹，需要配置 contentBase 属性，最好使用绝对路径。
 
 * devServer.open
  
@@ -98,7 +100,7 @@ devServer: {
 
 * devServer.hot
 
-   允许 dev-server 进行局部更新，即并不是刷新整个页面，而是对有修改的组件进行局部刷新。
+   允许 dev-server 进行局部更新，即并不是刷新整个页面，而是对有修改的组件进行局部刷新。
 
    如果需要配置该项，则：
    1. 配置 `hot:true`, 并且在插件项中配置webpack.HotModuleReplacementPlugin插件，否则报错。
@@ -133,9 +135,9 @@ devServer: {
 
     inline模式(将webpack-dev-sever的客户端入口添加到包(bundle)中) 
 
-// todo: 以下挪到前一节
+    // todo: 以下挪到前一节
 
-1. webpack4.0之后 命令行单独分出一个包，webpack-cli, 安装webpack-cli包。 
+2. webpack4.0之后 命令行单独分出一个包，webpack-cli, 安装webpack-cli包。 
 
 ```
 npm install webpack-cli -D

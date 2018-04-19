@@ -410,5 +410,42 @@ var isProd = ENV === 'production';
 压缩时使用的 UglifyJsPlugin 只支持压缩 ES5 语法代码，因此，为了同时支持 treeShaking 和压缩功能，引入 uglifyjs-webpack-plugin 模块，该模块配置方法与 webpack 自带的 UglifyJsPlugin 基本相同，但是可以压缩 ES6 语法代码。
 
 
+## 输出分析
+
+### 优化效果：
+
+对输出的代码模块，大小，打包耗时，相互关系进行展示，方便分析。
+
+### 实现方法：
+
+#### 方法一
+
+需要用到 Webpack Analyse
+
+在 webpack 打包命令后增加参数：
+
+```
+webpack --profile --json > stats.json
+```
+
+这样打包后可以看到项目主目录下生成了一个 stats.json 文件。
+
+打开 https://webpack.github.io/analyse/ 上传 json 文件，即可看到当前项目的模块，模块大小，打包耗时，相互关系的展示。
+
+#### 方法二
+
+全局安装模块
+
+```
+npm i -g webpack-bundle-analyzer
+```
+之后在项目目录下执行
+
+```
+webpack-bundle-analyzer stats.json
+```
+
+就会自动打开浏览器，并显示一个可视化的数据关系图。
+
 
 

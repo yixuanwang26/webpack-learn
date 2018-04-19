@@ -14,7 +14,7 @@
     "dll": "webpack --config webpack.dll.config.js",
     "start-dev": "cross-env NODE_ENV=development webpack-dev-server",
     "start-prod": "cross-env NODE_ENV=production webpack-dev-server",
-    "build-dev": "cross-env NODE_ENV=development webpack --display-used-exports",
+    "build-dev": "cross-env NODE_ENV=development webpack --display-used-exports --profile --json > stats.json",
     "build-prod": "cross-env NODE_ENV=production webpack --display-used-exports"
   },
   "author": "nenawan",

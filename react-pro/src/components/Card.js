@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Card.scss';
+import { AFun } from '../util/util';
 
 
 export class Card extends React.Component {
@@ -9,7 +10,7 @@ export class Card extends React.Component {
         super(props);
     }
     componentDidMount() {
-        console.log('已完成渲染');
+        AFun('完成渲染');
     }
     render() {
         return (
